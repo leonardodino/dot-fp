@@ -10,4 +10,4 @@ install:
   - yarn
 
 script:
-  - yarn test && codecov
+  - yarn test && nyc report --reporter=text-lcov > coverage.lcov && codecov
