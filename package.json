@@ -4,8 +4,6 @@
   "description": "Curried version of dot-prop-immutable",
   "main": "index.js",
   "scripts": {
-    "postversion": "git push && git push --tags",
-    "preversion": "npm test",
     "test": "nyc mocha && nyc report > lcov.info"
   },
   "repository": {
