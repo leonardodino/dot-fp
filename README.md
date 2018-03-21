@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/dot-fp.svg)](https://www.npmjs.com/package/dot-fp)
 [![Build Status](https://travis-ci.org/leonardodino/dot-fp.svg)](https://travis-ci.org/leonardodino/dot-fp)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/738804b802aa4b3069d5/test_coverage)](https://codeclimate.com/github/leonardodino/dot-fp/test_coverage)
+[![Test Coverage](https://codecov.io/gh/leonardodino/dot-fp/branch/master/graph/badge.svg)](https://codecov.io/gh/leonardodino/dot-fp)
 
 Curried version of dot-prop-immutable.
 
