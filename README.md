@@ -1,6 +1,6 @@
 # dot-fp
 
-[![npm version](https://img.shields.io/npm/v/dot-fp.svg)](https://www.npmjs.com/package/dot-fp)
+[![npm version](https://badge.fury.io/js/dot-fp.svg)](https://www.npmjs.com/package/dot-fp)
 [![Build Status](https://travis-ci.org/leonardodino/dot-fp.svg)](https://travis-ci.org/leonardodino/dot-fp)
 [![Test Coverage](https://codecov.io/gh/leonardodino/dot-fp/branch/master/graph/badge.svg)](https://codecov.io/gh/leonardodino/dot-fp)
 
