@@ -1,6 +1,6 @@
 var dotProp = require('..');
 
-describe('dot-prop-immutable.number.spec.js', function () {
+describe('dot-number.spec.js', function () {
 
 	var arr = [1, {a: false}];
 
@@ -10,7 +10,7 @@ describe('dot-prop-immutable.number.spec.js', function () {
 		describe('when set prop using number as path', () => {
 
 			before(function () {
-				result = dotProp.set(arr, 1, 3);
+				result = dotProp.set(arr)(1)(3);
 			});
 
 			it('should replace prop', () => {
@@ -27,7 +27,7 @@ describe('dot-prop-immutable.number.spec.js', function () {
 		describe('when get prop using number as path', () => {
 
 			before(function () {
-				result = dotProp.get(arr, 1);
+				result = dotProp.get(arr)(1);
 			});
 
 			it('should get prop', () => {
@@ -40,7 +40,7 @@ describe('dot-prop-immutable.number.spec.js', function () {
 		describe('when delete prop using number as path', () => {
 
 			before(function () {
-				result = dotProp.delete(arr, 1);
+				result = dotProp.delete(arr)(1);
 			});
 
 			it('should remove prop', () => {

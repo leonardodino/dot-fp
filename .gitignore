@@ -2,3 +2,8 @@ node_modules
 .DS_Store
 .idea
 npm-debug.log
+.nyc_output
+lcov.info
+package-lock.json
+*.log
+

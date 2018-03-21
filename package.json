@@ -1,21 +1,21 @@
 {
-  "name": "dot-prop-immutable",
-  "version": "1.4.0",
-  "description": "Immutable version of dot-prop with some extensions",
+  "name": "dot-fp",
+  "version": "1.0.0",
+  "description": "Curried version of dot-prop-immutable",
   "main": "index.js",
   "scripts": {
     "postversion": "git push && git push --tags",
     "preversion": "npm test",
-    "test": "mocha"
+    "test": "nyc mocha && nyc report > lcov.info"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/debitoor/dot-prop-immutable"
+    "url": "https://github.com/leonardodino/dot-fp"
   },
-  "author": "debitoor",
+  "author": "Leonardo Dino",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/debitoor/dot-prop-immutable/issues"
+    "url": "https://github.com/leonardodino/dot-fp/issues"
   },
   "keywords": [
     "immutable",
@@ -32,13 +32,18 @@
     "access",
     "notation"
   ],
-  "homepage": "https://github.com/debitoor/dot-prop-immutable",
+  "homepage": "https://github.com/leonardodino/dot-fp",
   "devDependencies": {
     "chai": "^2.2.0",
     "eslint-plugin-react": "^3.5.1",
     "jscs": "2.2.1",
     "mocha": "^2.1.1",
     "mocha-eslint": "^0.1.7",
-    "mocha-jscs": "^3.0.0"
+    "mocha-jscs": "^3.0.0",
+    "mock-require": "^3.0.1",
+    "nyc": "^11.6.0"
+  },
+  "dependencies": {
+    "dot-prop-immutable": "^1.4.0"
   }
 }

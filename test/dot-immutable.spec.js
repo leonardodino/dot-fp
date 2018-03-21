@@ -1,6 +1,6 @@
 var dotProp = require('..');
 
-describe('dot-prop-immutable.spec.js', function() {
+describe('dot-immutable.spec.js', function() {
 
 	var obj = {
 		a: 1,
@@ -25,7 +25,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set prop', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'b', 3);
+					result = dotProp.set(obj)('b')(3);
 				});
 
 				it('should replace prop', () => {
@@ -43,7 +43,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set prop empty object', () => {
 
 				before(function () {
-					result = dotProp.set({}, 'b', 3);
+					result = dotProp.set({})('b')(3);
 				});
 
 				it('should replace prop', () => {
@@ -56,7 +56,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set prop empty path', () => {
 
 				before(function () {
-					result = dotProp.set({}, '', 3);
+					result = dotProp.set({})('')(3);
 				});
 
 				it('should replace prop', () => {
@@ -69,7 +69,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set prop with function', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'a', v => v + 1);
+					result = dotProp.set(obj)('a')(v => v + 1);
 				});
 
 				it('should replace prop', () => {
@@ -90,7 +90,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set deep prop', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'b.x', 3);
+					result = dotProp.set(obj)('b.x')(3);
 				});
 
 				it('should replace prop', () => {
@@ -111,7 +111,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set deep prop not defined', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'b.z.w', 3);
+					result = dotProp.set(obj)('b.z.w')(3);
 				});
 
 				it('should replace prop', () => {
@@ -135,7 +135,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[index]', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'c.0', 3);
+					result = dotProp.set(obj)('c.0')(3);
 				});
 
 				it('should replace prop', () => {
@@ -156,7 +156,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[index] with function', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'c.0', v => v * 3);
+					result = dotProp.set(obj)('c.0')(v => v * 3);
 				});
 
 				it('should replace prop', () => {
@@ -177,7 +177,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[index] prop not defined', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'c.1.z.w', 3);
+					result = dotProp.set(obj)('c.1.z.w')(3);
 				});
 
 				it('should replace prop', () => {
@@ -198,7 +198,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[index] out of index', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'c.3', 3);
+					result = dotProp.set(obj)('c.3')(3);
 				});
 
 				it('should replace prop', () => {
@@ -221,7 +221,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[$end]', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'c.$end', 3);
+					result = dotProp.set(obj)('c.$end')(3);
 				});
 
 				it('should replace prop', () => {
@@ -244,7 +244,7 @@ describe('dot-prop-immutable.spec.js', function() {
 
 				before(function () {
 					try {
-						dotProp.set(obj, 'c.w', 3);
+						dotProp.set(obj)('c.w')(3);
 					} catch (err) {
 						error = err;
 					}
@@ -263,7 +263,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[index]', () => {
 
 				before(function () {
-					result = dotProp.set(arr, '0', 3);
+					result = dotProp.set(arr)('0')(3);
 				});
 
 				it('should replace prop', () => {
@@ -278,7 +278,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when set array[index] deep prop', () => {
 
 				before(function () {
-					result = dotProp.set(arr, '1.a', v => !v);
+					result = dotProp.set(arr)('1.a')(v => !v);
 				});
 
 				it('should replace prop', () => {
@@ -297,133 +297,82 @@ describe('dot-prop-immutable.spec.js', function() {
 		describe('when have an object', () => {
 
 			describe('when get prop', () => {
-
 				it('should get prop', () => {
-					expect(dotProp.get(obj, 'b')).to.eql({ x: 1, y: 2 });
-				});
-				it('should get prop default', () => {
-					expect(dotProp.get(obj, 'd', 'default')).to.eql('default');
+					expect(dotProp.get(obj)('b')).to.eql({ x: 1, y: 2 });
 				});
 			});
 
 			describe('when get prop empty object', () => {
-
 				it('should get prop', () => {
-					expect(dotProp.get({}, 'b')).to.equal(undefined);
-				});
-				it('should get prop default', () => {
-					expect(dotProp.get({}, 'b', 'default')).to.equal('default');
+					expect(dotProp.get({})('b')).to.equal(undefined);
 				});
 			});
 
 			describe('when get prop empty path', () => {
-
 				it('should get prop', () => {
-					expect(dotProp.get(obj, '')).to.equal(undefined);
-				});
-				it('should get prop default', () => {
-					expect(dotProp.get(obj, '', 'default')).to.equal('default');
+					expect(dotProp.get(obj)('')).to.equal(undefined);
 				});
 			});
 
 			describe('when get deep prop', () => {
-
 				it('should get prop', () => {
-					expect(dotProp.get(obj, 'b.x')).to.equal(1);
-				});
-				it('should get prop default', () => {
-					expect(dotProp.get(obj, 'b.z', 'default')).to.equal('default');
+					expect(dotProp.get(obj)('b.x')).to.equal(1);
 				});
 			});
 
 			describe('when get dotted prop', () => {
-
 				it('should get prop', () => {
-					expect(dotProp.get(obj, 'b\\.x')).to.equal(10);
-				});
-				it('should get prop default', () => {
-					expect(dotProp.get(obj, 'b\\.y', 'default')).to.equal('default');
+					expect(dotProp.get(obj)('b\\.x')).to.equal(10);
 				});
 			});
 
 			describe('when get deep prop not defined', () => {
-
 				it('should return undefined', () => {
-					expect(dotProp.get(obj, 'b.z.w')).to.equal(undefined);
-				});
-
-				it('should return the default value', () => {
-					expect(dotProp.get(obj, 'b.z.w', 'something')).to.equal('something');
+					expect(dotProp.get(obj)('b.z.w')).to.equal(undefined);
 				});
 			});
 
 			describe('when get array[index]', () => {
-
 				it('should get index', () => {
-					expect(dotProp.get(obj, 'c.0')).to.equal(1);
-				});
-				it('should get index default', () => {
-					expect(dotProp.get(obj, 'c.2', 'default')).to.equal('default');
+					expect(dotProp.get(obj)('c.0')).to.equal(1);
 				});
 			});
 
 			describe('when get array[index] prop not defined', () => {
-
 				it('should return undefined', () => {
-					expect(dotProp.get(obj, 'c.1.z.w')).to.equal(undefined);
-				});
-				it('should return default', () => {
-					expect(dotProp.get(obj, 'c.1.z.w', 'default')).to.equal('default');
+					expect(dotProp.get(obj)('c.1.z.w')).to.equal(undefined);
 				});
 			});
 
 			describe('when get array[index] out of index', () => {
-
 				it('should return undefined', () => {
-					expect(dotProp.get(obj, 'c.3')).to.equal(undefined);
+					expect(dotProp.get(obj)('c.3')).to.equal(undefined);
 				});
 			});
 
 			describe('when get array[$end]', () => {
-
 				it('should get end index', () => {
-					expect(dotProp.get(obj, 'c.$end')).to.equal(2);
+					expect(dotProp.get(obj)('c.$end')).to.equal(2);
 				});
 			});
 
 			describe('when get undefined prop on array', () => {
-
 				it('should return undefined', () => {
-					expect(dotProp.get(obj, 'c.w')).to.equal(undefined);
-				});
-				it('should return default', () => {
-					expect(dotProp.get(obj, 'c.w', 'default')).to.equal('default');
+					expect(dotProp.get(obj)('c.w')).to.equal(undefined);
 				});
 			});
 		});
-
 		describe('when have an array', () => {
-
 			describe('when get array[index]', () => {
-
 				it('should get index', () => {
-					expect(dotProp.get(arr, '0')).to.equal(1);
-				});
-				it('should return default when index not present', () => {
-					expect(dotProp.get(arr, '2', 'default')).to.equal('default');
+					expect(dotProp.get(arr)('0')).to.equal(1);
 				});
 			});
-
 			describe('when get array[index] deep prop', () => {
-
 				it('should replace prop', () => {
-					expect(dotProp.get(arr, '1.a')).to.equal(false);
-				});
-				it('should return default when not present', () => {
-					expect(dotProp.get(arr, '1.b', 'default')).to.equal('default');
+					expect(dotProp.get(arr)('1.a')).to.equal(false);
 				});
 			});
-
 		});
 	});
 
@@ -434,7 +383,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete prop', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'b');
+					result = dotProp.delete(obj)('b');
 				});
 
 				it('should delete prop', () => {
@@ -451,7 +400,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete prop empty object', () => {
 
 				before(function () {
-					result = dotProp.delete({}, 'b');
+					result = dotProp.delete({})('b');
 				});
 
 				it('should delete prop', () => {
@@ -462,7 +411,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete prop empty path', () => {
 
 				before(function () {
-					result = dotProp.delete({}, '');
+					result = dotProp.delete({})('');
 				});
 
 				it('should delete prop', () => {});
@@ -471,7 +420,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete deep prop', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'b.x');
+					result = dotProp.delete(obj)('b.x');
 				});
 
 				it('should delete prop', () => {
@@ -491,7 +440,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete deep prop not defined', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'b.z.w');
+					result = dotProp.delete(obj)('b.z.w');
 				});
 
 				it('should delete prop', () => {
@@ -512,7 +461,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index]', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'c.0');
+					result = dotProp.delete(obj)('c.0');
 				});
 
 				it('should delete prop', () => {
@@ -533,7 +482,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index] with function', () => {
 
 				before(function () {
-					result = dotProp.set(obj, 'c.0', v => v * 3);
+					result = dotProp.set(obj)('c.0')(v => v * 3);
 				});
 
 				it('should delete prop', () => {
@@ -554,7 +503,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index] prop not defined', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'c.1.z.w');
+					result = dotProp.delete(obj)('c.1.z.w');
 				});
 
 				it('should delete prop', () => {
@@ -575,7 +524,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index] out of index', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'c.3');
+					result = dotProp.delete(obj)('c.3');
 				});
 
 				it('should delete prop', () => {
@@ -596,7 +545,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[$end]', () => {
 
 				before(function () {
-					result = dotProp.delete(obj, 'c.$end');
+					result = dotProp.delete(obj)('c.$end');
 				});
 
 				it('should delete prop', () => {
@@ -619,7 +568,7 @@ describe('dot-prop-immutable.spec.js', function() {
 
 				before(function () {
 					try {
-						dotProp.delete(obj, 'c.w');
+						dotProp.delete(obj)('c.w');
 					} catch (err) {
 						error = err;
 					}
@@ -638,7 +587,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index]', () => {
 
 				before(function () {
-					result = dotProp.delete(arr, '0');
+					result = dotProp.delete(arr)('0');
 				});
 
 				it('should delete prop', () => {
@@ -653,7 +602,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index] deep prop', () => {
 
 				before(function () {
-					result = dotProp.delete(arr, '1.a');
+					result = dotProp.delete(arr)('1.a');
 				});
 
 				it('should delete prop', () => {
@@ -668,7 +617,7 @@ describe('dot-prop-immutable.spec.js', function() {
 			describe('when delete array[index] which element is undefined', () => {
 
 				before(function () {
-					result = dotProp.delete(arrWithUndefined, '1');
+					result = dotProp.delete(arrWithUndefined)('1');
 				});
 
 				it('should delete the element', () => {

@@ -1,6 +1,6 @@
 var dotProp = require('..');
 
-describe('dot-prop-immutable.toggle.spec.js', function () {
+describe('dot-toggle.spec.js', function () {
 
 	var arr = [1, {a: false}];
 
@@ -10,7 +10,7 @@ describe('dot-prop-immutable.toggle.spec.js', function () {
 		describe('toggle a value', () => {
 
 			before(function () {
-				result = dotProp.toggle(arr, '1.a');
+				result = dotProp.toggle(arr)('1.a');
 			});
 			
 

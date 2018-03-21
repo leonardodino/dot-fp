@@ -1,6 +1,6 @@
 var dotProp = require('..');
 
-describe('dot-prop-immutable.merge.spec.js', function () {
+describe('dot-merge.spec.js', function () {
 	
 	var obj = {
 		a: 1,
@@ -21,7 +21,7 @@ describe('dot-prop-immutable.merge.spec.js', function () {
 		describe('merge an object value into object', () => {
 
 			before(function () {
-				result = dotProp.merge(obj, 'b', {z: 3});
+				result = dotProp.merge(obj)('b')({z: 3});
 			});
 		
 			it('should merge prop', () => {
@@ -45,7 +45,7 @@ describe('dot-prop-immutable.merge.spec.js', function () {
 		describe('merge an array value into array', () => {
 
 			before(function () {
-				result = dotProp.merge(obj, 'c', [3, 4]);
+				result = dotProp.merge(obj)('c')([3, 4]);
 			});
 
 			it('should merge prop', () => {
@@ -68,7 +68,7 @@ describe('dot-prop-immutable.merge.spec.js', function () {
 		describe('merge an object value into null', () => {
 
 			before(function () {
-				result = dotProp.merge(obj, 'd', {foo: 'bar'});
+				result = dotProp.merge(obj)('d')({foo: 'bar'});
 			});
 
 			it('should merge prop', () => {
@@ -91,7 +91,7 @@ describe('dot-prop-immutable.merge.spec.js', function () {
 		describe('merge an object value into undefined', () => {
 
 			before(function () {
-				result = dotProp.merge(obj, 'z', {foo: 'bar'});
+				result = dotProp.merge(obj)('z')({foo: 'bar'});
 			});
 
 			it('should merge prop', () => {
