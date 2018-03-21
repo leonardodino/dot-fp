@@ -1,6 +1,6 @@
 {
   "name": "dot-fp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Curried version of dot-prop-immutable",
   "main": "index.js",
   "scripts": {
