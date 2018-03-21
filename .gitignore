@@ -4,6 +4,7 @@ node_modules
 npm-debug.log
 .nyc_output
 lcov.info
+coverage.lcov
 package-lock.json
 *.log
 
