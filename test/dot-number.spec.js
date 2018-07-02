@@ -1,4 +1,4 @@
-var dotProp = require('..');
+var dotProp = require('../imperative');
 
 describe('dot-number.spec.js', function () {
 

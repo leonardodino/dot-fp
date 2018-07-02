@@ -1,4 +1,4 @@
-var dotProp = require('..');
+var dotProp = require('../imperative');
 
 describe('dot-immutable.spec.js', function() {
 

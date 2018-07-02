@@ -1,6 +1,6 @@
 var mock = require('mock-require');
 
-var ternary = function(a, b, c){return a + b + c; }; 
+var ternary = function(a, b, c){return a + b + c; };
 var binary = function(a, b){return a + b; };
 
 mock('dot-prop-immutable', {
@@ -11,7 +11,7 @@ mock('dot-prop-immutable', {
 	merge: ternary
 });
 
-var dotFp = require('../fp');
+var dotFp = require('..');
 
 describe('dot-fp.spec.js', function() {
 	it('should set', () => {

@@ -1,4 +1,4 @@
-var dotProp = require('..');
+var dotProp = require('../imperative');
 
 describe('dot-toggle.spec.js', function () {
 
@@ -12,7 +12,7 @@ describe('dot-toggle.spec.js', function () {
 			before(function () {
 				result = dotProp.toggle(arr)('1.a');
 			});
-			
+
 
 			it('should toggle prop', () => {
 				expect(result).to.eql(

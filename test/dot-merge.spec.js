@@ -1,7 +1,7 @@
-var dotProp = require('..');
+var dotProp = require('../imperative');
 
 describe('dot-merge.spec.js', function () {
-	
+
 	var obj = {
 		a: 1,
 		b: {
@@ -12,7 +12,7 @@ describe('dot-merge.spec.js', function () {
 		d: null,
 		'b.x': 10
 	};
-    
+
 	var arr = [1, {a: [1, 2]}];
 
 	var result;
@@ -23,7 +23,7 @@ describe('dot-merge.spec.js', function () {
 			before(function () {
 				result = dotProp.merge(obj)('b')({z: 3});
 			});
-		
+
 			it('should merge prop', () => {
 				expect(result).to.eql({
 					a: 1,
@@ -37,9 +37,9 @@ describe('dot-merge.spec.js', function () {
 					'b.x': 10
 				});
 			});
-			
+
 			it('invariant', objInvariant);
-        
+
 		});
 
 		describe('merge an array value into array', () => {
@@ -111,8 +111,8 @@ describe('dot-merge.spec.js', function () {
 			it('invariant', objInvariant);
 
 		});
-		
-		
+
+
 	});
 
 	function objInvariant() {
